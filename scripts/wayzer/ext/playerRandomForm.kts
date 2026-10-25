@@ -89,6 +89,23 @@ private val randomForms = listOf(
             "我从来都误会书：{msg}",
         )
     ),
+    RandomForm(
+        code = "lao",
+        displayName = "牢",
+        forcedTitle = "[gold]牢[white]",
+        rewardPoints = 1,
+        rewardDesc = "加入牢字辈",
+        color = gold,
+        trailColor = gold,
+        messageTemplates = listOf(
+            "孩子们想我{msg}了吗",
+            "",
+            "孩子们，你们想我{msg}了吗",
+            "也是让你{msg}了",
+            "别人：嘉豪，我：{msg}，就很...你们懂吧",
+            "我从来都误会书：{msg}",
+        )
+    ),
 )
 
 private val formByCode = randomForms.associateBy { it.code }
@@ -200,7 +217,7 @@ fun toggleRandomForm(player: Player) {
     setCurrentForm(player, form)
     refreshName(player)
     playTransformEffect(player, form)
-    broadcast("[gold]${oldName}[yellow]变成了[white]${form.displayName}[yellow]！".with())
+    broadcast("[gold]${oldName}${when(form.code) { "lao" -> "[yellow]加入了牢字辈！", else -> "[yellow]变成了[white]${form.displayName}[yellow]！" }}".with())
     tryGiveDailyReward(player, form)
 }
 
@@ -211,7 +228,7 @@ fun setRandomForm(player: Player, code: String, reward: Boolean = false, announc
     refreshName(player)
     playTransformEffect(player, form)
     if (announce) {
-        broadcast("[gold]${oldName}[yellow]变成了[white]${form.displayName}[yellow]！".with())
+        broadcast("[gold]${oldName}${when(form.code) { "lao" -> "[yellow]加入了牢字辈！", else -> "[yellow]变成了[white]${form.displayName}[yellow]！" }}".with())
     }
     if (reward) tryGiveDailyReward(player, form)
     return true
