@@ -89,6 +89,23 @@ private val randomForms = listOf(
             "我从来都误会书：{msg}",
         )
     ),
+    RandomForm(
+        code = "lao",
+        displayName = "牢",
+        forcedTitle = "[gold]牢[white]",
+        rewardPoints = 5,
+        rewardDesc = "加入牢字辈",
+        color = gold,
+        trailColor = gold,
+        messageTemplates = listOf(
+            "孩子们你们想我{msg}了吗",
+            "孩子们，想我{msg}了吗",
+            "也是{msg}了属于是",
+            "也是让你{msg}了",
+            "别人：嘉豪，我：{msg}，就很...你们懂吧",
+            "我从来都误会书：{msg}",
+        )
+    ),
 )
 
 private val formByCode = randomForms.associateBy { it.code }
